@@ -7,13 +7,14 @@ const sortColors = function(nums) {
     let pointer_b = 0;
     let pointer_c = nums.length-1;
 
-    while (pointer_b !== pointer_c) {
-        if (nums[pointer_a] === 0) {
+    while (pointer_a <= pointer_c) {
+        if(nums[pointer_a] === 0) {
             [nums[pointer_a],nums[pointer_b]] = [nums[pointer_b],nums[pointer_a]];
             pointer_b++;
+            pointer_a++;
         } else if (nums[pointer_a] === 2) {
             [nums[pointer_a],nums[pointer_c]] = [nums[pointer_c],nums[pointer_a]];
-            pointer_c--
+            pointer_c--;
         } else {
             pointer_a++
         }
