@@ -4,25 +4,32 @@
  */
 const reverseWords = function(s) {
     let array = s.split (" ");
-    const returnArray = [];
-    let pointer = array.length-1;
+    let pointer_left_1 = 0;
+    let pointer_right_1 = array.length-1;
 
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] !== " ") {
 
-            returnArray[pointer] = returnArray.push(array[i])
-
-            if (pointer !== 0){
-                returnArray.push(" ")
-            }
-
+    while (pointer_left_1 < pointer_right_1) {
+        if (array[pointer_right_1] === '') {
+            pointer_right_1--;
+        } else if (array[pointer_left_1] === '') {
+            [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
+            pointer_right_1--;
+            pointer_left_1++;
+        } else if (array[pointer_left_1] !== '') {
+            [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
+            pointer_left_1++;
+            pointer_right_1--;
         }
     }
 
-    returnArray.pop()
-    console.log(returnArray)
+    while (array[array.length-1] === '') {
+        array.pop();
+    }
+
+    console.log (array.join(" "));
 };
 
 reverseWords ("the sky is blue");
 reverseWords ("  hello world  ");
 reverseWords ("a good   example");
+reverseWords ("  The sky    is blue!  ");
