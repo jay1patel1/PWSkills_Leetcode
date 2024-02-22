@@ -4,8 +4,8 @@
  */
 const reverseWords = function(s) {
     let array = s.split (" ");
-    array = ar
-    console.log(array);
+    let pointer_a = array.length;
+    const returnArray = [];
 };
 
 reverseWords ("the sky is blue");
