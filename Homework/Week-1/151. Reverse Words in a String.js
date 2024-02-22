@@ -7,13 +7,13 @@ const reverseWords = function(s) {
     const returnArray = [];
 
     for (let index = array.length; index > 0 ; index--) {
-        if (array[i] !== " "); {
-            returnArray.push(array[i]);
+        if (array[index] !== " "); {
+            returnArray.push(array[index]);
             returnArray.push(" ");
         }
         returnArray.pop;
-        
     }
+    console.log(returnArray);
 };
 
 reverseWords ("the sky is blue");
