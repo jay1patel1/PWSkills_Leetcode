@@ -5,15 +5,22 @@
 const reverseWords = function(s) {
     let array = s.split (" ");
     const returnArray = [];
+    let pointer = array.length-1;
 
-    for (let index = array.length; index > 0 ; index--) {
-        if (array[index] !== " "); {
-            returnArray.push(array[index]);
-            returnArray.push(" ");
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== " ") {
+
+            returnArray[pointer] = returnArray.push(array[i])
+
+            if (pointer !== 0){
+                returnArray.push(" ")
+            }
+
         }
-        returnArray.pop;
     }
-    console.log(returnArray);
+
+    returnArray.pop()
+    console.log(returnArray)
 };
 
 reverseWords ("the sky is blue");
