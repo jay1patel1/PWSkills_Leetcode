@@ -9,18 +9,22 @@ const reverseWords = function(s) {
 
 
     while (pointer_left_1 < pointer_right_1) {
-        if (array[pointer_right_1] === '') {
-            pointer_right_1--;
-        } else if (array[pointer_left_1] === '') {
+        if (array[pointer_left_1] === '' && array[pointer_right_1] !== '') {
             [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
             pointer_right_1--;
             pointer_left_1++;
-        } else if (array[pointer_left_1] !== '') {
+        } else if (array[pointer_left_1] === '' && array[pointer_right_1] === '') {
+            pointer_right_1--;
+        } else if (array[pointer_left_1] !== '' && array[pointer_right_1] !== '') {
             [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
+            pointer_right_1--;
             pointer_left_1++;
+        } else if (array[pointer_left_1] !== '' && array[pointer_right_1] === '') {
             pointer_right_1--;
         }
     }
+
+    console.log();
 
     while (array[array.length-1] === '') {
         array.pop();
