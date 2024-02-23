@@ -4,42 +4,21 @@
  */
 const reverseWords = function(s) {
     let array = s.split (" ");
-    let pointer_left_1 = 0;
-    let pointer_right_1 = array.length-1;
+    let returnArray = [];
 
-
-    while (pointer_left_1 < pointer_right_1) {
-        if (array[pointer_right_1] !== '' && array[pointer_right_1-1] === '') {
-            [array[pointer_right_1],array[pointer_right_1-1]] = [array[pointer_right_1-1],array[pointer_right_1]];
-            pointer_right_1--
-        } else {
-            if (array[pointer_left_1] === '' && array[pointer_right_1] !== '') {
-                [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
-                pointer_right_1--;
-                pointer_left_1++;
-            } else if (array[pointer_left_1] === '' && array[pointer_right_1] === '') {
-                pointer_right_1--;
-            } else if (array[pointer_left_1] !== '' && array[pointer_right_1] !== '') {
-                [array[pointer_left_1],array[pointer_right_1]] = [array[pointer_right_1],array[pointer_left_1]]
-                pointer_right_1--;
-                pointer_left_1++;
-            } else if (array[pointer_left_1] !== '' && array[pointer_right_1] === '') {
-                pointer_right_1--;
-            }
+    // console.log(array)
+    for (let i = array.length-1; i >= 0; i--) {
+        if (array[i] !== '') {
+            returnArray.push(array[i])
         }
-        
     }
 
-    console.log();
+    console.log(returnArray.join(" "))
 
-    while (array[array.length-1] === '') {
-        array.pop();
-    }
-
-    console.log (array.join(" "));
 };
 
 reverseWords ("the sky is blue");
 reverseWords ("  hello world  ");
 reverseWords ("a good   example");
 reverseWords ("  The sky    is blue!  ");
+reverseWords ("F R  I   E    N     D      S      ");
