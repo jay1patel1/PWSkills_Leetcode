@@ -6,8 +6,7 @@ const majorityElement = function(nums) {
 
     let mp = {}
 
-    let maxValue = 0;
-    let rerunValue;
+    const returnValue = [];
 
     for (let i = 0; i < nums.length; i++) {
 
@@ -16,15 +15,19 @@ const majorityElement = function(nums) {
         } else if (mp[nums[i]] !== undefined){
             mp[nums[i]]++;
         }
+        
+    }
 
-        if (mp[nums[i]] > maxValue) {
-            rerunValue = nums[i];
-            maxValue = mp[nums[i]];
+    for (const returnValueKey in mp) {
+        if (mp[returnValueKey] > nums.length / 3) {
+            returnValue.push(parseInt(returnValueKey));
         }
     }
 
-    console.log(rerunValue);
+    console.log(returnValue);
 };
 
 majorityElement([3,2,3]);
 majorityElement([7,7,7,7,2,2,1,1,1,2,2,7,7,7,7,6,6,8,8,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]);
+majorityElement([1]);
+majorityElement([1,2]);
