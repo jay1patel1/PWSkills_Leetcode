@@ -32,26 +32,36 @@ public class mergesort {
             j++;
         }
 
-        System.out.println(Arrays.toString(result));
+//        System.out.println(Arrays.toString(result));
 
-        return result; 
+        return result;
     }
 
     public static int[] mergeSortHelper(int[] arr, int start, int end) {
-        
+
         if (start == end) {
-            return arr;
+            int [] result = new int[1];
+            result[0] = arr[start];
+//            System.out.println(Arrays.toString(result));
+            return result;
         }
 
         int mid = (start + end) /2;
         int[] left = mergeSortHelper(arr, start, mid);
         int[] right = mergeSortHelper(arr, mid + 1, end);
 
+        System.out.println(Arrays.toString(arr));
         return merge(left, right);
+    }
+
+    public static int[] mergeSort(int[] arr) {
+        arr = mergeSortHelper(arr,0,arr.length-1);
+        return arr;
     }
 
     public static void main(String[] args) {
         int[] arr = {1, 3, 5, 45,2,67,8};
-        mergeSortHelper(arr, 0, arr.length);
+        int[] result = mergeSort(arr);
+        System.out.println(Arrays.toString(result));
     }
 }
