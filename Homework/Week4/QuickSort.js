@@ -1,47 +1,45 @@
-function splitArray (arr,start,end) {
+function quickSort (nums) {
 
-    if (start >= end) {
-        return
-    }
+    function splitArray (arr,start,end) {
 
-    let i = start;
-    let j = end;
-    let randomPosition = Math.floor(Math.random() * (j - i + 1)) + i;
-    let x = arr[randomPosition];
-
-    while (i < j) {
-        if (arr[i] > x) {
-            let temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-            j--;
-        } else if (arr[j] < x) {
-            let temp = arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-            i++;
-        } else if (arr[i] < x) {
-            i++;
-        } else if (arr[j] > x) {
-            j--;
+        if (!(start < end)) {
+            return
         }
+
+        let i = start - 1; // bucket
+        let j = start; // finding
+        let randomPosition = Math.floor(Math.random() * (end - start + 1)) + start;
+        let x = arr[randomPosition];
+        [arr[randomPosition],arr[end]] = [arr[end],arr[randomPosition]]
+
+        while (j <= end - 1) {
+            if (arr[j] < x) {
+                i++
+                [arr[j],arr[i]] = [arr[i],arr[j]];
+            }
+            j++
+        }
+
+        [arr[i + 1], arr[end]] = [arr[end], arr[i + 1]]
+
+        splitArray(arr,start,i);
+        splitArray(arr,i+2,end);
+
+        return arr;
     }
 
-    splitArray(arr,start,i-1);
-    splitArray(arr,i+1,end);
-
-    return arr;
+    const returnArray = splitArray(nums,0,nums.length-1);
+    return (returnArray)
 }
 
-function quickSort (array) {
-    const returnArray = splitArray(array,0,array.length-1);
-    console.log(returnArray)
-}
 
-quickSort ([9,6,3,1,4,8]);
-quickSort ([5, 9, 12, 3, 8]);
-quickSort ([17, 22, 6, 11, 4]);
+console.log(quickSort ([9,6,3,1,4,8]));
+console.log(quickSort ([5, 9, 12, 3, 8]));
+console.log(quickSort ([17, 22, 6, 11, 4]));
+console.log(quickSort ([5,1,1,2,0,0]));
+console.log(quickSort ([5,2,3,1]));
+console.log(quickSort ([1,1,1,2,2,2,3,4,4,4,4,5,5,5,2,2,2,1,1,1]));
+console.log(quickSort ([0]));
 // splitArray ([1, 8, 14, 19, 25],8);
 // splitArray ([10, 15, 20, 6, 11],15);
 // splitArray ([3, 7, 13, 18, 24],13);
-quickSort ([1,1,1,2,2,2,3,4,4,4,4,5,5,5,2,2,2,1,1,1]);
