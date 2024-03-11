@@ -11,7 +11,6 @@ function mergeSort (arr) {
                 resultArray.push(left[i]);
                 i++;
             } else {
-                inversion += left.length - i;
                 resultArray.push(right[j]);
                 j++
             }
