@@ -6,14 +6,16 @@ function selectionSortRecursion (arr) {
             return arr;
         }
 
-        if (a === c-1) {
+        if (a === c) {
             [arr[b], arr[c]] = [arr[c], arr[b]];
             c--;
             a = 0;
             b = 0;
+        } else {
+            
         }
 
-        if (arr[a] > arr [b]) {
+        if (arr[a] >= arr [b]) {
             b = a;
             a++;
         } else {
@@ -21,6 +23,7 @@ function selectionSortRecursion (arr) {
         }
 
         sort (arr,a,b,c);
+        return arr;
     }
 
     let retrunArray = sort (arr,0,0,arr.length-1);
