@@ -1,38 +1,40 @@
-function bubbleSortRecursion (arr) {
-    let p_A = 0;
-    let p_B = 1;
-    let p_C = arr.length -1;
+function selectionSortRecursion (arr) {
 
     function sort (arr,a,b,c) {
+        
         if (c == 0) {
             return arr;
         }
-        if (arr[a] > arr[b]) {
-            [arr[a], arr[b]] = [arr[b], arr[a]]
-        }
-        a++;
-        b++;
-        if ((b-1) == c) {
+
+        if (a === c-1) {
+            [arr[b], arr[c]] = [arr[c], arr[b]];
             c--;
-            a=0;
-            b=1;
+            a = 0;
+            b = 0;
         }
-        sort(arr,a,b,c);
-        return arr;
+
+        if (arr[a] > arr [b]) {
+            b = a;
+            a++;
+        } else {
+            a++;
+        }
+
+        sort (arr,a,b,c);
     }
 
-    let retrunArray = sort (arr,0,1,arr.length-1);
+    let retrunArray = sort (arr,0,0,arr.length-1);
 
     return retrunArray;
 
 }
 
-console.log(bubbleSortRecursion([5,2,1,8,10,4,3,1]));
-console.log(bubbleSortRecursion([64, 34, 25, 12, 22, 11, 90]));
-console.log(bubbleSortRecursion([4, 1, 3, 9, 7]));
-console.log(bubbleSortRecursion([-4, -1, -3, -9, -7]));
-console.log(bubbleSortRecursion([-4, -1, -3, -9, -7]));
-console.log(bubbleSortRecursion([1,1,1,1,1,1,1]));
-console.log(bubbleSortRecursion([1,0,1,0,1,0,1]));
-console.log(bubbleSortRecursion([-1,0,-1,0,-1,0,-1]));
-console.log(bubbleSortRecursion([-1,8,-4,78,-45456456,7,-456456456456]));
+console.log(selectionSortRecursion([5,2,1,8,10,4,3,1]));
+// console.log(bubbleSortRecursion([64, 34, 25, 12, 22, 11, 90]));
+// console.log(bubbleSortRecursion([4, 1, 3, 9, 7]));
+// console.log(bubbleSortRecursion([-4, -1, -3, -9, -7]));
+// console.log(bubbleSortRecursion([-4, -1, -3, -9, -7]));
+// console.log(bubbleSortRecursion([1,1,1,1,1,1,1]));
+// console.log(bubbleSortRecursion([1,0,1,0,1,0,1]));
+// console.log(bubbleSortRecursion([-1,0,-1,0,-1,0,-1]));
+// console.log(bubbleSortRecursion([-1,8,-4,78,-45456456,7,-456456456456]));

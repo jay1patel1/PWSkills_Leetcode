@@ -1,8 +1,4 @@
 function bubbleSortRecursion (arr) {
-    let p_A = 0;
-    let p_B = 1;
-    let p_C = arr.length -1;
-
     function sort (arr,a,b,c) {
         if (c == 0) {
             return arr;
