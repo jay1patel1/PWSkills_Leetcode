@@ -3,41 +3,26 @@
  * @return {number}
  */
 let minimumOperations = function(nums) {
-    
-    let sortedArray = nums.sort((a,b) => b-a)
 
-    let pointer_A = sortedArray.length - 1;
+    let obj = {};
 
-    let count = 0
-
-    while (pointer_A >= 0) {
-
-        while (sortedArray[pointer_A] == 0) {
-            if (pointer_A === 0) {
-                console.log(count);
-                return count
-            } else {
-                pointer_A--
-            }
+    nums.forEach((i) => {
+        if (obj[i]) {
+            obj[i]++
+        } else {
+            obj[i] = 1;
         }
+    })
 
-        for (let i = 0; i < sortedArray.length; i++) {
-            if (sortedArray[i] !== 0) {
-                sortedArray[i] -= sortedArray[pointer_A] 
-            }
+    let length = Object.keys(obj).length;
 
-            if (i === pointer_A) {
-                break;
-            }
-            
-        }
-        
-        count++;
+    if (obj[0]) {
+        return length -1
+    } else {
+        return length
     }
-
-    console.log(count);
-    return count;
 };
 
-minimumOperations ([1,5,0,3,5]);
-minimumOperations ([1]);
+console.log(minimumOperations ([1,5,0,3,5]));
+console.log(minimumOperations ([1]));
+console.log(minimumOperations ([1,5,0,3,5,7,8,6,2])); 
