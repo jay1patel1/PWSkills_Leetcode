@@ -40,6 +40,3 @@ console.log(quickSort ([5,1,1,2,0,0]));
 console.log(quickSort ([5,2,3,1]));
 console.log(quickSort ([1,1,1,2,2,2,3,4,4,4,4,5,5,5,2,2,2,1,1,1]));
 console.log(quickSort ([0]));
-// splitArray ([1, 8, 14, 19, 25],8);
-// splitArray ([10, 15, 20, 6, 11],15);
-// splitArray ([3, 7, 13, 18, 24],13);
