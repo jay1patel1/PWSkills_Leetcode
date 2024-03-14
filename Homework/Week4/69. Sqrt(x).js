@@ -2,29 +2,29 @@
  * @param {number} x
  * @return {number}
  */
-var mySqrt = function(x) {
-    function binarySearch (target,start,end) {
-        let value = 
-        if (start > end) {
-            return -1;
+let mySqrt = function(x) {
+
+    let target = x;
+    function binarySearch (start,end) {
+
+        let mid = (start+end)/2;
+
+        if (Math.floor((mid*mid)) === target) {
+            return Math.floor(mid);
+        } else if ((mid*mid) > target) {
+            return binarySearch(start,mid);
         } else {
-            const mid = Math.floor((start+end) / 2);
-            
-            if ((end - mid) === target) {
-                    return mid;
-            } else if ((end - mid) > target) {
-                binarySearch (target, start, mid);
-            }  else {
-                binarySearch (target, mid, end);
-            }
+            return binarySearch(mid,end);
         }
     }
 
-    let target = 0;
     let start = 0;
     let end = x;
 
-    binarySearch (target,start,end);
+    return binarySearch (start,end);
 };
 
-mySqrt (16);
+console.log(mySqrt (16));
+console.log(mySqrt (25));
+console.log(mySqrt (20));
+console.log(mySqrt (100));
