@@ -1,30 +1,30 @@
-const shipWithinDays = function(weights, days) {
+const shipWithinDays = function(nums, k) {
     function checkDays (value) {
         let store = 0;
-        let days = 0;
-        for (let i = 0; i < weights.length; i++) {
-            if ((store + weights[i]) <= value) {
-                store += weights[i];
+        let k = 0;
+        for (let i = 0; i < nums.length; i++) {
+            if ((store + nums[i]) <= value) {
+                store += nums[i];
             } else {
-                days++;
+                k++;
                 store = 0;
                 i--;
             }
         }
-        days++;
-        return days;
+        k++;
+        return k;
     }
     function search () {
 
-        let lo = Math.max(...weights);
-        let hi = weights.reduce((a,c) => a+c,0);
+        let lo = Math.max(...nums);
+        let hi = nums.reduce((a,c) => a+c,0);
         let ans = lo
 
         while (lo <= hi) {
             let mid = lo + Math.floor((hi-lo)/2);
             let takenDays = checkDays(mid);
 
-            if (days >= takenDays) {
+            if (k >= takenDays) {
                 ans = mid;
                 hi = mid - 1;
             } else {
